@@ -4,14 +4,14 @@ import java.math.BigDecimal
 
 interface Operation {
     val user: String
-    fun apply(oldBalance: BigDecimal): BigDecimal
+    fun calculate(oldBalance: BigDecimal): BigDecimal
 }
 
 data class Deposit(
         override val user: String,
         val sum: BigDecimal
 ) : Operation {
-    override fun apply(oldBalance: BigDecimal): BigDecimal = oldBalance.add(sum)
+    override fun calculate(oldBalance: BigDecimal): BigDecimal = oldBalance.add(sum)
 }
 
 data class Payment(
@@ -19,5 +19,5 @@ data class Payment(
         val sum: BigDecimal,
         val shopId: String
 ) : Operation {
-    override fun apply(oldBalance: BigDecimal): BigDecimal = oldBalance.subtract(sum)
+    override fun calculate(oldBalance: BigDecimal): BigDecimal = oldBalance.subtract(sum)
 }

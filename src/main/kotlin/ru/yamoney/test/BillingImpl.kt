@@ -11,9 +11,7 @@ class BillingImpl : Billing {
     override fun getShopIdOperations(shopId: String) {
         file.readLines()
                 .map { it.toOperation() }
-                .filter { it is Payment }
-                .map { it as Payment }
-                .filter { it.shopId == shopId }
+                .filter { it is Payment && it.shopId == shopId }
                 .forEach {
                     println(it)
                 }
