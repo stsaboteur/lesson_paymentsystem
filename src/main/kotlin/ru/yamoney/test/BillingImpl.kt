@@ -23,7 +23,7 @@ class BillingImpl : Billing {
                 .map { it.toOperation() }
                 .filter { it.user == user }
                 .forEach {
-                    balance = it.apply(balance)
+                    balance = it.calculate(balance)
                 }
         println("$user balance: ${balance.toPlainString()}")
         return balance
